@@ -91,7 +91,7 @@ public class HelloServiceTest
         return new LanguageRepository()
         {
             @Override
-            Optional<Language> findById(Long id) {
+            Optional<Language> findById(Integer id) {
                 return Optional.of(new Language(null, WELCOME, null));
             }
         };
@@ -102,7 +102,7 @@ public class HelloServiceTest
         return new LanguageRepository()
         {
             @Override
-            Optional<Language> findById(Long id)
+            Optional<Language> findById(Integer id)
             {
                 if(id.equals(HelloService.FALLBACK_LANG.getId()))
                 {
@@ -119,7 +119,7 @@ public class HelloServiceTest
         return new LanguageRepository()
         {
             @Override
-            Optional<Language> findById(Long id)
+            Optional<Language> findById(Integer id)
             {
                 return Optional.empty();
             }

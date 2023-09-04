@@ -1,18 +1,39 @@
 package io.github.adam;
 
-public class Language
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "languages")
+class Language
 {
-    private Long id; //Long object id
+    //strategy to generate ids
+    @Id
+    @GeneratedValue(generator="inc")
+    @GenericGenerator(name="inc", strategy = "increment")
+    private Integer id; //Long object id
     private String welcomeMessage;
     private String code;
 
-    public Language(Long id, String welcomeMessage, String code) {
+    public Language(Integer id, String welcomeMessage, String code) {
         this.id = id;
         this.welcomeMessage = welcomeMessage;
         this.code = code;
     }
 
-    public Long getId() {
+    /**
+     * Hibernate (Java Persistence Api) needs it.
+     */
+    public Language()
+    {
+
+    }
+
+    public Integer getId() {
         return id;
     }
 

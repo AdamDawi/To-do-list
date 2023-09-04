@@ -6,17 +6,13 @@ import java.util.Optional;
 
 public class LanguageRepository
 {
-    private List<Language> languages;
-
-    LanguageRepository()
+    Optional<Language> findById(Integer id)
     {
-        languages = new ArrayList<>();
-        languages.add(new Language(1L, "Hello", "en"));
-        languages.add(new Language(2L, "Czesc", "pl"));
-    }
-
-    Optional<Language> findById(Long id)
-    {
-        return languages.stream().filter(l->l.getId().equals(id)).findFirst(); //finding id with stream
+        var session = HibernateUtil.getSessionFactory().openSession();
+        var transaction = session.beginTransaction();
+        var result = session.get(Language.class, id); //get data to language class
+        transaction.commit();
+        session.close();
+        return Optional.ofNullable(result);
     }
 }
