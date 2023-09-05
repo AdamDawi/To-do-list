@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.Optional;
 
 @WebServlet(name = "Hello", urlPatterns = {"/api"}) //to jetty to initialize this servlet
 
@@ -34,7 +35,17 @@ public class HelloServlet extends HttpServlet
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         logger.info("Got request with parameters " + req.getParameterMap());
-        resp.getWriter().write(service.prepareGreeting(req.getParameter(NAME_PARAM), req.getParameter(LANG_PARAM)));
+        var name = req.getParameter(NAME_PARAM);
+        var lang = req.getParameter(LANG_PARAM);
+        Integer langId = null;
+        try {
+            langId = Integer.valueOf(lang);
+        }
+        catch(NumberFormatException e)
+        {
+            logger.warn("Non-numeric Language id used: " + lang);
+        }
+        resp.getWriter().write(service.prepareGreeting(name, langId));
 
 
     }

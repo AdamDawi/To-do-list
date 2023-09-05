@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-@Entity
+@Entity //mapping to data base
 @Table(name = "languages")
 public class Language
 {
@@ -15,7 +15,7 @@ public class Language
     @Id
     @GeneratedValue(generator="inc")
     @GenericGenerator(name="inc", strategy = "increment")
-    private Integer id; //Long object id
+    private Integer id;
     private String welcomeMessage;
     private String code;
 
