@@ -32,7 +32,7 @@
         <property name="hbm2ddl.auto">validate</property>
 
         <!-- Names the annotated entity class -->
-        <mapping class="io.github.adam.Language"/>
+        <mapping class="io.github.adam.language.Language"/>
 
     </session-factory>
 

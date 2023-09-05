@@ -26,6 +26,7 @@ public class App
                         new PlusConfiguration(),
                         new JettyWebXmlConfiguration()
                 });
+        webapp.setInitParameter("org.eclipse.jetty.servlet.Default.maxCachedFiles", "0"); //for dynamic site reload changes
         webapp.setAttribute("org.eclipse.jetty.server.webapp.ContainerIncludeJarPattern", ".*/classes/.*");
         var server = new Server(8080);
         server.setHandler(webapp);
