@@ -14,7 +14,7 @@ The application is built using the following technologies:
 - Hibernate(for Object-Relational Mapping)
 - Pure.css(for graphic elements)
 
-### Here are some pictures of the mobile application:
+### Here are some pictures of the application:
 
 ![1](https://github.com/AdamDawi/To-do-list/assets/49430055/61c7f450-be5b-4514-a9a4-904aad0976b8)
 ![2](https://github.com/AdamDawi/To-do-list/assets/49430055/e977c99b-6012-43d5-92aa-6bdfd1e4938d)
